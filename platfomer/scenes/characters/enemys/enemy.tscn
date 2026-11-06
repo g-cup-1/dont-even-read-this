@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://b8c5me44r4hpa"]
+
+[ext_resource type="Script" uid="uid://ck874iojxrv5s" path="res://scripts/characters/enemys/enemy.gd" id="1_tmhdl"]
+[ext_resource type="SpriteFrames" uid="uid://b5wtdguxp8cqc" path="res://aseets/animated sprite/animation.tres" id="2_4sl3i"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v45ci"]
+radius = 4.0
+height = 10.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4sl3i"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x82l2"]
+radius = 8.062258
+
+[node name="enemy" type="CharacterBody2D" unique_id=808511232 groups=["enymes"]]
+position = Vector2(0, -1)
+collision_layer = 2
+script = ExtResource("1_tmhdl")
+attack_cooldown = 2.0
+enemy_color = Color(2.2621452e-06, 0.702974, 1.540184e-06, 1)
+attack_range = 20.0
+knockback_force = Vector2(100, -60)
+
+[node name="collision" type="CollisionShape2D" parent="." unique_id=646656246]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_v45ci")
+
+[node name="enemy_sprite" type="AnimatedSprite2D" parent="." unique_id=503400605]
+modulate = Color(1, 0.37503216, 0.2746115, 1)
+texture_filter = 1
+scale = Vector2(1, 0.8)
+sprite_frames = ExtResource("2_4sl3i")
+animation = &"attack "
+
+[node name="atack_area" type="Area2D" parent="." unique_id=707344104]
+
+[node name="left_area" type="CollisionShape2D" parent="atack_area" unique_id=1804644054]
+position = Vector2(-10, 1)
+shape = SubResource("CircleShape2D_4sl3i")
+disabled = true
+
+[node name="right_area" type="CollisionShape2D" parent="atack_area" unique_id=1812172536]
+position = Vector2(9, 1)
+shape = SubResource("CircleShape2D_x82l2")
+disabled = true

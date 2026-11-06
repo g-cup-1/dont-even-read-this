@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://dayw0t28dqsn1"]
+
+[ext_resource type="Script" uid="uid://ck874iojxrv5s" path="res://scripts/characters/enemys/enemy.gd" id="1_hp1l5"]
+[ext_resource type="SpriteFrames" uid="uid://dsrk6o48x2g6a" path="res://aseets/animated sprite/anime2.tres" id="2_asxeu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v45ci"]
+radius = 6.0
+height = 28.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4sl3i"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x82l2"]
+radius = 7.0
+
+[node name="enemy" type="CharacterBody2D" unique_id=808511232 groups=["enymes"]]
+collision_layer = 2
+script = ExtResource("1_hp1l5")
+attack_cooldown = 2.0
+enemy_color = Color(0, 0.6939059, 0.31660876, 1)
+attack_range = 30.0
+knockback_force = Vector2(100, -60)
+
+[node name="enemy_sprite" type="AnimatedSprite2D" parent="." unique_id=503400605]
+texture_filter = 1
+position = Vector2(0, -4)
+sprite_frames = ExtResource("2_asxeu")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="collision" type="CollisionShape2D" parent="." unique_id=646656246]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_v45ci")
+
+[node name="atack_area" type="Area2D" parent="." unique_id=707344104]
+
+[node name="left_area" type="CollisionShape2D" parent="atack_area" unique_id=1804644054]
+position = Vector2(-13, 0)
+shape = SubResource("CircleShape2D_4sl3i")
+disabled = true
+
+[node name="right_area" type="CollisionShape2D" parent="atack_area" unique_id=1812172536]
+position = Vector2(13, 0)
+shape = SubResource("CircleShape2D_x82l2")
+disabled = true

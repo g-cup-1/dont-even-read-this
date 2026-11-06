@@ -1,0 +1,10 @@
+[gd_resource type="Theme" format=3 uid="uid://d03mix3tf14rs"]
+
+[ext_resource type="FontFile" uid="uid://2waujmt00kt" path="res://aseets/Godot-Fontpack-d244bf6170b399a6d4d26a0d906058ddf2dafdf1/fonts/kirifont/KiriFont.otf" id="1_8f666"]
+
+[resource]
+default_font = ExtResource("1_8f666")
+Button/font_sizes/font_size = 87
+Button/fonts/font = ExtResource("1_8f666")
+Label/font_sizes/font_size = 78
+Label/fonts/font = ExtResource("1_8f666")

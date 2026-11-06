@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://d0jbiqkck1rey"]
+
+[ext_resource type="Script" uid="uid://cw634tek2x4ma" path="res://scripts/env/spikes.gd" id="1_teqhi"]
+[ext_resource type="Texture2D" uid="uid://dmgfl7m71mdi1" path="res://aseets/Tilemap/monochrome_tilemap_transparent.png" id="2_n2d7y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_teqhi"]
+size = Vector2(4, 6.375)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n2d7y"]
+size = Vector2(8, 3.375)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c3mou"]
+size = Vector2(4, 8.75)
+
+[node name="spikes 1" type="Node2D" unique_id=1722925580]
+script = ExtResource("1_teqhi")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1136430549]
+texture_filter = 1
+texture = ExtResource("2_n2d7y")
+region_enabled = true
+region_rect = Rect2(101.16342, 135.96124, 16.581161, 11.709793)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1893326496]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1294272594]
+position = Vector2(5, -2.1875)
+shape = SubResource("RectangleShape2D_teqhi")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D" unique_id=1025829197]
+position = Vector2(0, -3.6875)
+shape = SubResource("RectangleShape2D_n2d7y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2008359599]
+position = Vector2(-3, -1.375)
+shape = SubResource("RectangleShape2D_c3mou")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

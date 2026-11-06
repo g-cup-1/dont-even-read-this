@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://bx8l72j84q0uo"]
+
+[ext_resource type="Script" uid="uid://bgblwkx5kypf5" path="res://scripts/ui/scripts.gd" id="1_b67nm"]
+[ext_resource type="FontFile" uid="uid://2waujmt00kt" path="res://aseets/Godot-Fontpack-d244bf6170b399a6d4d26a0d906058ddf2dafdf1/fonts/kirifont/KiriFont.otf" id="2_o7q1r"]
+
+[sub_resource type="Theme" id="Theme_o7q1r"]
+default_font = ExtResource("2_o7q1r")
+Button/font_sizes/font_size = 55
+Button/fonts/font = ExtResource("2_o7q1r")
+Label/font_sizes/font_size = 160
+Label/fonts/font = ExtResource("2_o7q1r")
+
+[sub_resource type="Theme" id="Theme_rh4f0"]
+default_font = ExtResource("2_o7q1r")
+Button/font_sizes/font_size = 160
+Button/fonts/font = ExtResource("2_o7q1r")
+Label/font_sizes/font_size = 160
+Label/fonts/font = ExtResource("2_o7q1r")
+
+[node name="MAIN SCREAN" type="Control" unique_id=671812196]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b67nm")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=922062105]
+layout_mode = 0
+offset_left = -366.0
+offset_top = -212.0
+offset_right = 1019.0
+offset_bottom = 623.0
+color = Color(0, 0, 0, 1)
+
+[node name="menu" type="VBoxContainer" parent="." unique_id=233221407]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -34.0
+offset_right = 26.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="play" type="Button" parent="menu" unique_id=985077332]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_o7q1r")
+text = "play"
+
+[node name="quit" type="Button" parent="menu" unique_id=1656401733]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_rh4f0")
+theme_override_font_sizes/font_size = 55
+text = "quit"
+
+[connection signal="pressed" from="menu/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="menu/quit" to="." method="_on_quit_pressed"]

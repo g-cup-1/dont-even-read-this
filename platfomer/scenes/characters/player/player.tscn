@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://dfwbimuw71km3"]
+
+[ext_resource type="Script" uid="uid://b03vnta3omvwb" path="res://scripts/characters/player/player.gd" id="1_7uws0"]
+[ext_resource type="FontFile" uid="uid://du5o53rw8ntdk" path="res://aseets/Godot-Fontpack-d244bf6170b399a6d4d26a0d906058ddf2dafdf1/fonts/xolonium/xolonium-fonts-4.1/ttf/Xolonium-Bold.ttf" id="2_686vu"]
+[ext_resource type="SpriteFrames" uid="uid://dsrk6o48x2g6a" path="res://aseets/animated sprite/anime2.tres" id="2_t61fv"]
+[ext_resource type="AudioStream" uid="uid://55s7ypbu6prw" path="res://aseets/arpmedia-retro-arcade-game-music-577821.mp3" id="4_hss88"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kg6o1"]
+
+[sub_resource type="Theme" id="Theme_t61fv"]
+Label/font_sizes/font_size = 300
+Label/fonts/font = ExtResource("2_686vu")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kg6o1"]
+radius = 17.029387
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cxaq4"]
+radius = 16.03122
+
+[node name="player" type="CharacterBody2D" unique_id=965124959 groups=["player"]]
+script = ExtResource("1_7uws0")
+attack_damage = Vector2i(60, 80)
+attack_cooldown = 0.2
+
+[node name="collision" type="CollisionShape2D" parent="." unique_id=1107447155]
+shape = SubResource("CapsuleShape2D_kg6o1")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=936907232]
+position = Vector2(58, 0)
+zoom = Vector2(2, 2)
+process_callback = 0
+
+[node name="ColorRect2" type="ColorRect" parent="Camera2D" unique_id=1603682864]
+z_index = 1000
+offset_left = -181.0
+offset_top = -124.0
+offset_right = 177.0
+offset_bottom = -95.0
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/ColorRect2" unique_id=1951214414]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 357.0
+offset_bottom = 28.0
+color = Color(0, 0, 0, 1)
+
+[node name="healt" type="Label" parent="Camera2D/ColorRect2/ColorRect" unique_id=1353811162]
+unique_name_in_owner = true
+z_index = 1000
+texture_filter = 2
+layout_mode = 0
+offset_left = 26.0
+offset_top = 8.0
+offset_right = 1262.0
+offset_bottom = 368.0
+scale = Vector2(0.05, 0.05)
+theme = SubResource("Theme_t61fv")
+text = "Hp: xxx"
+
+[node name="time" type="Label" parent="Camera2D/ColorRect2/ColorRect" unique_id=1634743758]
+unique_name_in_owner = true
+z_index = 1000
+texture_filter = 2
+layout_mode = 0
+offset_left = 224.0
+offset_top = 8.0
+offset_right = 2543.0
+offset_bottom = 368.0
+scale = Vector2(0.05, 0.05)
+theme = SubResource("Theme_t61fv")
+text = "Score: xxxxxx"
+
+[node name="player_animation" type="AnimatedSprite2D" parent="." unique_id=450223578]
+texture_filter = 1
+sprite_frames = ExtResource("2_t61fv")
+animation = &"attack "
+
+[node name="atack_area" type="Area2D" parent="." unique_id=55171635]
+collision_layer = 3
+collision_mask = 3
+
+[node name="left_area" type="CollisionShape2D" parent="atack_area" unique_id=1308011918]
+position = Vector2(-23, 0)
+shape = SubResource("CircleShape2D_kg6o1")
+disabled = true
+
+[node name="right_area" type="CollisionShape2D" parent="atack_area" unique_id=813257138]
+position = Vector2(23, 0)
+shape = SubResource("CircleShape2D_cxaq4")
+disabled = true
+
+[node name="Timer" type="Timer" parent="." unique_id=1448406691]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=626798921]
+stream = ExtResource("4_hss88")
